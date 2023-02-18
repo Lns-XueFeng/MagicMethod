@@ -60,11 +60,3 @@ class List:
 
     def pop(self):
         pass
-
-
-if __name__ == "__main__":
-    l = List(1, 2, 3, 4, 4)
-    print(l)
-    print(reversed(l))
-    print(l[1])
-    print(1 in l)
