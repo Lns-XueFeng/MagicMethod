@@ -25,7 +25,7 @@ class Book:
 
     def __enter__(self):
         """ 在with语句结束之前做些什么 """
-        pass
+        return self
 
     def __exit__(self, exc_type, exc_value, traceback):
         """ 在with语句结束的时候做些什么 """
@@ -36,8 +36,6 @@ class Book:
 
 
 if __name__ == "__main__":
-    book = Book()
-    print(book)
-    with book as b:
+    with Book() as book:
         content = book.get_content()
         print(content)
