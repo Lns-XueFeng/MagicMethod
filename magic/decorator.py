@@ -1,4 +1,4 @@
-class AddDescr:
+class AddWords:
     LNS = "Lns-"
 
     def __str__(self):
@@ -12,10 +12,11 @@ class AddDescr:
         return add_name()
 
 
-@AddDescr()
+@AddWords()
 def show_name():
     return "XueFeng"
 
 
-print(show_name)
-print(show_name())
+if __name__ == "__main__":
+    name = show_name()
+    print(name)

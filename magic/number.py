@@ -1,4 +1,6 @@
 class Number:
+    __slots__ = "num"
+
     def __init__(self, num):
         """ 在对象实例化时, 调用以用于构建实例对象 """
         self.num = num
@@ -67,7 +69,7 @@ class Number:
 
 
 class IntNumber(Number):
-    int_num = None
+    __int_num = None
 
     def __new__(cls, num):
         """
@@ -75,19 +77,19 @@ class IntNumber(Number):
         被调用，以用于定制化对象，这里是在构建实例对象之前检查num的类型是否为int
         """
         if not isinstance(num, int):
-            cls.int_num = int(num)
+            cls.__int_num = int(num)
         return super().__new__(cls)
 
     def __init__(self, num):
         super().__init__(self)
-        self.num = self.int_num
+        self.num = self.__int_num
 
     def __repr__(self):
         return f"{self.__class__.__name__}: {self.num}"
 
 
 class FloatNumber(Number):
-    float_num = None
+    __float_num = None
 
     def __new__(cls, num):
         """
@@ -95,12 +97,12 @@ class FloatNumber(Number):
         被调用，以用于定制化对象，这里是在构建实例对象之前检查num的类型是否为float
         """
         if not isinstance(num, float):
-            cls.float_num = float(num)
+            cls.__float_num = float(num)
         return super().__new__(cls)
 
     def __init__(self, num):
         super().__init__(self)
-        self.num = self.float_num
+        self.num = self.__float_num
 
     def __repr__(self):
         return f"{self.__class__.__name__}: {self.num}"

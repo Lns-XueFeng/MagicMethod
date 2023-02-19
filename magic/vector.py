@@ -1,43 +1,48 @@
 class Vector:
+    __slots__ = ("__x", "__y")  # 限制实例变量仅为_x, _y, 以节省内存
+
     def __init__(self, x, y):
         """ 在对象实例化时, 调用以用于构建实例对象 """
-        __slots__ = ("_x", "_y")   # 限制实例变量仅为_x, _y, 以节省内存
-        self._x = x
-        self._y = y
+        self.__x = x
+        self.__y = y
 
     def __repr__(self):
         """ 自定义对象的官方描述 """
-        return f"{self.__class__.__name__}({self._x}, {self._y})"
+        return f"{self.__class__.__name__}({self.__x}, {self.__y})"
 
     def __str__(self):
         """ 自定义对象的非官方描述 """
-        return f"This is a Vector(x：{self._x}, y：{self._y})"
+        return f"This is a Vector(x：{self.__x}, y：{self.__y})"
 
     def __add__(self, other):
-        return Vector(self._x + other.x, self._y + other.y)
+        """ 可在该对象之间使用内置操作符+ """
+        return Vector(self.__x + other.x, self.__y + other.y)
 
     def __sub__(self, other):
-        return Vector(self._x - other.x, self._y - other.y)
+        """ 可在该对象之间使用内置操作符- """
+        return Vector(self.__x - other.x, self.__y - other.y)
+
+    def __del__(self):
+        """ 可对该对象使用del关键字 当自动垃圾回收时亦会调用 """
+        print(f"{self.__class__.__name__}({self.__x}, {self.__y}) refer -1")
 
     @property
     def x(self):
-        return self._x
+        return self.__x
 
     @property
     def y(self):
-        return self._y
-
-    def __del__(self):
-        print(f"{self.__class__.__name__}({self._x}, {self._y}) has freed")
+        return self.__y
 
 
 if __name__ == "__main__":
     a = Vector(2, 3)
-    print(repr(a))   # == >>>a
-    print(str(a))   # == print(a)
-
     b = Vector(3, 4)
     c = a + b
-    print(repr(c))   # Vector(5, 7)
     d = a - b
+
+    print(repr(a))  # 相当于 >>>a
+    print(str(a))  # 相当于 print(a)
+
+    print(repr(c))   # Vector(5, 7)
     print(repr(d))   # Vector(-1, -1)
