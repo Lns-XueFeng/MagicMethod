@@ -53,14 +53,18 @@ class List:
         """ 可对该对象使用内置操作符in """
         return element in self.__list
 
+    @property
+    def list(self):
+        return self.__list
+
     def append(self, element):
-        pass
+        self.__list.append(element)
 
     def insert(self, index, element):
-        pass
+        self.__list.insert(index, element)
 
     def remove(self, element):
-        pass
+        self.__list.remove(element)
 
     def pop(self):
-        pass
+        self.__list.pop()
