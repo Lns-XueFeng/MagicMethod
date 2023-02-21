@@ -12,7 +12,7 @@ class Vector:
 
     def __str__(self):
         """ 自定义对象的非官方描述 """
-        return f"This is a Vector(x：{self.__x}, y：{self.__y})"
+        return f"This is a Vector(x: {self.__x}, y: {self.__y})"
 
     def __add__(self, other):
         """ 可在该对象之间使用内置操作符+ """
@@ -24,7 +24,8 @@ class Vector:
 
     def __del__(self):
         """ 可对该对象使用del关键字 当自动垃圾回收时亦会调用 """
-        print(f"{self.__class__.__name__}({self.__x}, {self.__y}) refer -1")
+        # print(f"{self.__class__.__name__}({self.__x}, {self.__y}) refer -1")
+        pass
 
     @property
     def x(self):
@@ -33,16 +34,3 @@ class Vector:
     @property
     def y(self):
         return self.__y
-
-
-if __name__ == "__main__":
-    a = Vector(2, 3)
-    b = Vector(3, 4)
-    c = a + b
-    d = a - b
-
-    print(repr(a))  # 相当于 >>>a
-    print(str(a))  # 相当于 print(a)
-
-    print(repr(c))   # Vector(5, 7)
-    print(repr(d))   # Vector(-1, -1)
