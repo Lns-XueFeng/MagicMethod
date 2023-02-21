@@ -4,14 +4,13 @@ from copy import copy
 
 class List:
     __slots__ = ("__list", "__iter_index",
-                 "__rever_index", "__list_index", )
+                 "__rever_index", )
 
-    def __init__(self, *args):
+    def __init__(self, li):
         """ 在对象实例化时, 调用以用于构建实例对象 """
-        self.__list = [*args]
+        self.__list = li
         self.__iter_index = len(self.__list)
         self.__rever_index = copy(self.__iter_index)
-        self.__list_index = None
 
     def __repr__(self):
         """ 自定义对象的官方描述 """
@@ -30,8 +29,8 @@ class List:
         """ 具体迭代的实现逻辑 """
         if self.__iter_index == 0:
             raise StopIteration
-        self.__list_index = self.__iter_index - 1
-        return self.__list[self.__list_index]
+        self.__iter_index = self.__iter_index - 1
+        return self.__list[self.__iter_index]
 
     def __reversed__(self):
         """ 可对该对象使用内置函数reverse """
@@ -45,9 +44,9 @@ class List:
         """ 可对该对象使用索引去值 """
         return self.__list[index]
 
-    def __delitem__(self, element):
+    def __delitem__(self, index):
         """ 可根据索引对该对象值进行删除 """
-        self.__list.remove(element)
+        del self.__list[index]
 
     def __contains__(self, element):
         """ 可对该对象使用内置操作符in """

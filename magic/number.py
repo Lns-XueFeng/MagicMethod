@@ -78,6 +78,8 @@ class IntNumber(Number):
         """
         if not isinstance(num, int):
             cls.__int_num = int(num)
+        else:
+            cls.__int_num = num
         return super().__new__(cls)
 
     def __init__(self, num):
@@ -98,6 +100,8 @@ class FloatNumber(Number):
         """
         if not isinstance(num, float):
             cls.__float_num = float(num)
+        else:
+            cls.__float_num = num
         return super().__new__(cls)
 
     def __init__(self, num):
