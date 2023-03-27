@@ -27,6 +27,11 @@ class TestList(unittest.TestCase):
         item = li[0]
         self.assertEqual(item, 1)
 
+    def test_setitem(self):
+        li = List([1, 2, 3])
+        li[0] = 10
+        self.assertEqual(li[0], 10)
+
     def test_delitem(self):
         test_del_li = List([1, 2])
         del test_del_li[0]
@@ -58,4 +63,3 @@ class TestList(unittest.TestCase):
         li = List([1, 2, 3, 4])
         li.pop()
         self.assertEqual(li.list, [1, 2, 3])
-

@@ -44,6 +44,10 @@ class List:
         """ 可对该对象使用索引去值 """
         return self.__list[index]
 
+    def __setitem__(self, index, item):
+        """ 可对该对象使用索引设置值 """
+        self.__list[index] = item
+
     def __delitem__(self, index):
         """ 可根据索引对该对象值进行删除 """
         del self.__list[index]
