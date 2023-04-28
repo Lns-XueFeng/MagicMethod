@@ -1,12 +1,13 @@
 """
-使用@property装饰器来创建只读属性，
-@property装饰器会将方法转换为相同名称的只读属性,
-可以与所定义的属性配合使用，这样可以防止属性被修改.
+Use @property decorators to create read-only properties,
+@property decorator converts the method to a read-only property of the same name
 """
 
 
 class Model:
     def __init__(self, password):
+        # This property has two setting
+        # the one is set it can read-only, the other can set it when it is assigned
         self.password = password
 
 
@@ -15,15 +16,15 @@ class User(Model):
 
     @property
     def password(self):
-        """ 可使此函数成为一个只读属性 """
+        """ This function is a read-only property """
         return self.__password_hash
 
     @password.setter
     def password(self, plain_text_password):
-        """ 在得到password属性之前做些什么 """
+        """ What to do before getting the password attribute """
         self.__password_hash = hex(int(plain_text_password))
 
 
 if __name__ == "__main__":
-    user = User("123456")   # 实际项目中不是明文密码传入：一般为form.password.data
+    user = User("123456")   # In fact, we usually write 'form.password.data' like this
     print(user.password)

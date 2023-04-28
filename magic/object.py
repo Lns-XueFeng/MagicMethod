@@ -3,22 +3,22 @@ class Object:
         self.counter = 0
 
     def __getattr__(self, attr):
-        """ 当实例对象试图访问一个不存在的属性时被调用 """
+        """ Called when an instance object attempts to access a property that does not exist """
         return "No This Attribute"
 
     def __getattribute__(self, attr):
-        """ 实例对象只要访问了属性它均会被调用 """
+        """ This magic method is called whenever the properties of the instance object are accessed """
         if attr == "data":
             self.counter += 1
         return super().__getattribute__(attr)
 
     def __setattr__(self, attr, value):
-        """ 当设置attribute时被调用(包括修改) """
+        """ Called when attribute is set (including modification) """
         print(f"set: {attr}: {value}")
         super().__setattr__(attr, value)
 
     def __delattr__(self, attr):
-        """ 当试图用关键字del删除一个属性时被调用 """
+        """ Called when attempting to delete a property with the keyword 'del' """
         print(f"del {attr}")
         super().__delattr__(attr)
 

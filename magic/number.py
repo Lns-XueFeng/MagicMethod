@@ -2,67 +2,67 @@ class Number:
     __slots__ = "num"
 
     def __init__(self, num):
-        """ 在对象实例化时, 调用以用于构建实例对象 """
+        """ When an object is instantiated, call it can construct instance object """
         self.num = num
 
     def __repr__(self):
-        """ 自定义对象的官方描述 """
+        """ The official description of the custom object """
         return f"{self.__class__.__name__}: {self.num}"
 
     def __abs__(self):
-        """ 可对该对象使用内建函数abs """
+        """ Support use the built-in function abs for this object """
         return abs(self.num)
 
     def __neg__(self):
-        """ 可对该对象使用内置操作符- """
+        """ Support use the built-in operators '-' for this object """
         return -self.num
 
     def __add__(self, other):
-        """ 可对该对象之间使用内置运算符+ """
+        """ Support use the built-in operators '+' for between objects """
         return self.__class__(self.num + other.num)
 
     def __sub__(self, other):
-        """ 可对该对象之间使用内置运算符- """
+        """ Support use the built-in operators '-' for between objects """
         return self.__class__(self.num - other.num)
 
     def __mul__(self, other):
-        """ 可对该对象之间使用内置运算符* """
+        """ Support use the built-in operators '*' for between objects """
         return self.__class__(self.num * other.num)
 
     def __truediv__(self, other):
-        """ 可对该对象之间使用内置运算符/ """
+        """ Support use the built-in operators '/' for between objects """
         return self.__class__(self.num / other.num)
 
     def __mod__(self, other):
-        """ 可对该对象之间使用内置运算符% """
+        """ Support use the built-in operators '%' for between objects """
         return self.__class__(self.num % other.num)
 
     def __gt__(self, other):
-        """ 可对该对象之间使用内置运算符> """
+        """ Support use the built-in operators '>' for between objects """
         return self.num > other.num
 
     def __ge__(self, other):
-        """ 可对该对象之间使用内置运算符>= """
+        """ Support use the built-in operators '>=' for between objects """
         return self.num >= other.num
 
     def __lt__(self, other):
-        """ 可对该对象之间使用内置运算符< """
+        """ Support use the built-in operators '<' for between objects """
         return self.num < other.num
 
     def __le__(self, other):
-        """ 可对该对象之间使用内置运算符<= """
+        """ Support use the built-in operators '<=' for between objects """
         return self.num <= other.num
 
     def __eq__(self, other):
-        """ 可对该对象之间使用内置运算符== """
+        """ Support use the built-in operators '==' for between objects """
         return self.num == other.num
 
     def __ne__(self, other):
-        """ 可对该对象之间使用内置运算符!= """
+        """ Support use the built-in operators '!=' for between objects """
         return self.num != other.num
 
     def __bool__(self):
-        """ 自定义该对象的bool判断 """
+        """ Support use the built-in function bool for this object """
         if self.num > 0:
             return True
         return False
@@ -73,8 +73,8 @@ class IntNumber(Number):
 
     def __new__(cls, num):
         """
-        在对象实例化(__init__调用之前) => 在class建立对象这个时间段
-        被调用，以用于定制化对象，这里是在构建实例对象之前检查num的类型是否为int
+        Before object instantiation (before __init__ call)
+        => is called during the time period during which the object is created in class
         """
         if not isinstance(num, int):
             cls.__int_num = int(num)
@@ -95,8 +95,8 @@ class FloatNumber(Number):
 
     def __new__(cls, num):
         """
-        在对象实例化(__init__调用之前) => 在class建立对象这个时间段
-        被调用，以用于定制化对象，这里是在构建实例对象之前检查num的类型是否为float
+        Before object instantiation (before __init__ call)
+        => is called during the time period during which the object is created in class
         """
         if not isinstance(num, float):
             cls.__float_num = float(num)
